@@ -1,0 +1,23 @@
+# 忽略依赖目录
+node_modules/
+dist/
+build/
+coverage/
+public/
+
+# 忽略 JS/TS/JSX/TSX 源码（只检查样式文件）
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx
+**/*.d.ts
+
+# 忽略压缩和构建产物样式
+*.min.css
+*.min.scss
+*.min.less
+
+# 忽略默认 Vite 入口或临时产物
+vite.config.*
+stylelint.config.*
+postcss.config.*

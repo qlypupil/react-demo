@@ -77,6 +77,7 @@ export default tseslint.config(
     },
     settings: {
       react: {
+        // 自动检测 React 版本
         version: 'detect',
       },
     },
