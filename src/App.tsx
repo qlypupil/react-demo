@@ -1,6 +1,6 @@
 import { Button } from 'antd'
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <h1>Vite-React-App</h1>

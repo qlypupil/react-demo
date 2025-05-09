@@ -14,6 +14,8 @@ import tseslint from 'typescript-eslint'
 import stylistic from '@stylistic/eslint-plugin'
 // 导入eslint-plugin-prettier的ESLint插件
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+// 导入 import 插件
+import importPlugin from 'eslint-plugin-import'
 
 // 导出ESLint配置
 export default tseslint.config(
@@ -23,7 +25,7 @@ export default tseslint.config(
     // 扩展推荐的规则集
     extends: [
       js.configs.recommended,
-      ...tseslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked , // 升级为类型检查的推荐规则集
       reactPlugin.configs.flat.recommended,
       eslintPluginPrettierRecommended,
       stylistic.configs.customize({
@@ -57,7 +59,8 @@ export default tseslint.config(
           jsx: true,
         },
         // 指定项目配置文件
-        project: './tsconfig.eslint.json',
+        project: ['./tsconfig.app.json', './tsconfig.node.json'],
+        tsconfigRootDir: import.meta.dirname,
       },
       // 添加浏览器环境的全局变量
       globals: {
@@ -74,6 +77,8 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       // React Refresh插件（用于保持组件状态的热重载）
       'react-refresh': reactRefresh,
+      // import 插件
+      'import': importPlugin,
     },
     settings: {
       react: {
@@ -91,6 +96,35 @@ export default tseslint.config(
         { allowConstantExport: true }, // 允许导出常量
       ],
       'react/react-in-jsx-scope': 'off',
+
+      // 类型安全规则
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/explicit-function-return-type': ['warn', {
+        allowExpressions: true,
+        allowTypedFunctionExpressions: true
+      }],
+      '@typescript-eslint/no-unused-vars': ['error', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+      }],
+
+      // import 排序规则
+      "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", "external", "internal", "parent", "sibling", "index"
+        ],
+        "pathGroups": [
+          { "pattern": "react", "group": "external", "position": "before" },  // react 排在最前
+          { "pattern": "react-*", "group": "external", "position": "before" }, // react-* 排在最前
+          { "pattern": "react-dom/client", "group": "external", "position": "before" },  // react-dom/client 排在最前
+          { "pattern": "antd/locale/zh_CN", "group": "external", "position": "after" }, // antd/locale/zh_CN 在 antd 后面
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ]
     },
   },
 )

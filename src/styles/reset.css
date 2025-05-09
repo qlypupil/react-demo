@@ -51,9 +51,9 @@ h1 {
  */
 
 hr {
-  height: 0; /* 1 */
   box-sizing: content-box; /* 1 */
   overflow: visible; /* 2 */
+  height: 0; /* 1 */
 }
 
 /**
@@ -240,9 +240,9 @@ fieldset {
 
 legend {
   display: table; /* 1 */
+  box-sizing: border-box; /* 1 */
   padding: 0; /* 3 */
   color: inherit; /* 2 */
-  box-sizing: border-box; /* 1 */
   max-width: 100%; /* 1 */
   white-space: normal; /* 1 */
 }
@@ -270,8 +270,8 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-  padding: 0; /* 2 */
   box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**

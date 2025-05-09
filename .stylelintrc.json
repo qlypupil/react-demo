@@ -8,8 +8,39 @@
   "rules": {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "selector-class-pattern": null,
+    "selector-class-pattern": [
+      "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$|^ant-",
+      {
+        "message": "Expected class selector to be kebab-case or ant-prefixed"
+      }
+    ],
     "no-empty-source": null,
+
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": ["/^ant-/"]
+    }],
+
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "local", "export"]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["composes", "compose-with"]
+      }
+    ],
+
+    "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "scss/at-mixin-pattern": "^[a-z][a-zA-Z0-9]+$",
+
+    "unit-allowed-list": ["em", "rem", "px", "%", "vh", "vw", "vmin", "vmax", "deg", "s", "ms"],
+    "property-no-vendor-prefix": [true, {
+      "ignoreProperties": ["appearance", "text-size-adjust", "tap-highlight-color"]
+    }],
+    "media-feature-name-no-vendor-prefix": true,
 
     "order/order": [
       "custom-properties",
@@ -42,6 +73,17 @@
         "align-content",
         "order",
 
+        {
+          "groupName": "Box Model",
+          "properties": [
+            "box-sizing",
+            "overflow",
+            "overflow-x",
+            "overflow-y",
+            "box-shadow"
+          ]
+        },
+
         "width",
         "height",
         "margin",
@@ -57,6 +99,26 @@
         "background",
         "border",
         "opacity",
+
+        {
+          "groupName": "Animation & Transform",
+          "properties": [
+            "animation",
+            "animation-name",
+            "animation-duration",
+            "animation-timing-function",
+            "animation-delay",
+            "animation-iteration-count",
+            "animation-direction",
+            "animation-fill-mode",
+            "animation-play-state",
+            "transform-origin",
+            "transform-style",
+            "backface-visibility",
+            "perspective",
+            "perspective-origin"
+          ]
+        },
 
         "transition",
         "transform"
