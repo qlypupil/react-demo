@@ -6,26 +6,26 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint:js": "eslint .",
+    "lint:js": "eslint . --cache",
     "lint:style": "stylelint 'src/**/*.{css,scss,less}'",
-    "lint:js:fix": "eslint --fix .",
+    "lint:js:fix": "eslint --fix . --cache",
     "lint:style:fix": "stylelint --fix 'src/**/*.{css,scss,less}'",
     "lint:prettier": "prettier --write .",
     "preview": "vite preview",
-    "ts": "tsc -b",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:fix": "npm run lint:js:fix && npm run lint:style:fix",
     "type-check": "tsc --noEmit",
+    "ts": "tsc -b",
     "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+      "npm run lint:js:fix",
+      "npm run lint:prettier"
     ],
     "*.{css,scss,less}": [
-      "stylelint --fix",
-      "prettier --write"
+      "npm run lint:style:fix",
+      "npm run lint:prettier"
     ]
   },
   "dependencies": {
