@@ -17,6 +17,8 @@
     // 指定模块解析策略
     "moduleResolution": "bundler",
     // 允许导入带有.ts扩展名的文件
+    "esModuleInterop": true,
+    // 允许导入带有.ts扩展名的文件
     "allowImportingTsExtensions": true,
     // 保持导入导出语句的原始语法
     "verbatimModuleSyntax": true,
