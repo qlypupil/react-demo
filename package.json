@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.25.0",
     "@stylistic/eslint-plugin": "^4.2.0",
     "@types/node": "^22.15.16",
